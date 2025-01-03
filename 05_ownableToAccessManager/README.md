@@ -5,12 +5,16 @@
 
 **Make sure to thoroughly verify all details before execution and proceed at your own risk.**
 
+![](./images/1.png)
+
 ## 0 Preparation
 
 - etherscan API Key
 - Infura API key(or you can use public rpc url)
-- private key for test account
+- private key for test accounts
   -> don't use your real account
+  - for execute
+  - for minter role
 - get a test token from faucet
 
   `https://www.alchemy.com/faucets/ethereum-sepolia`
@@ -157,6 +161,8 @@ anager.sol:MyAccessManager
 
 ## 6 Create an onlyOwnable Contract
 
+![](./images/3.png)
+
 ### 1 create an outline
 
 ```
@@ -223,7 +229,33 @@ npx hardhat verify --network sepolia --contract contracts/ERC20Ownable.sol:ERC20
 
 `https://sepolia.etherscan.io/`
 
-## 9 execute a grantRole and setTargetFunctionRole function
+## 9 transferOwnership
+
+![](./images/4.png)
+
+### 1 create a file
+
+`scripts/transaction/transferOwnership.ts`
+
+### 2 import ethers
+
+`import { ethers } from "hardhat";`
+
+### 3 get a Contract
+
+`await ethers.getContractAt()`
+
+### 4 transferOwnership
+
+`await ownable.transferOwnership()`
+
+### 5 execute the function
+
+`npx hardhat run scripts/transactions/transferOwnership.ts --network sepolia`
+
+## 10 execute a grantRole and setTargetFunctionRole function
+
+![](./images/5.png)
 
 ### 1 create a file
 
@@ -263,29 +295,9 @@ MINTER
 
 `npx hardhat run scripts/transactions/setRole.ts --network sepolia`
 
-## 10 transferOwnership
-
-### 1 create a file
-
-`scripts/transaction/transferOwnership.ts`
-
-### 2 import ethers
-
-`import { ethers } from "hardhat";`
-
-### 3 get a Contract
-
-`await ethers.getContractAt()`
-
-### 4 transferOwnership
-
-`await ownable.transferOwnership()`
-
-### 5 execute the function
-
-`npx hardhat run scripts/transactions/transferOwnership.ts --network sepolia`
-
 ## 11 execute mint function
+
+![](./images/6.png)
 
 ### 1 create a file
 
