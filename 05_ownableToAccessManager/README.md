@@ -1,8 +1,17 @@
+# Warning
+
+```
+Please proceed with caution and take full responsibility when executing this.
+Particularly, if you mistakenly assign the Owner role to an incorrect address using the transferOwnership function, the contract may become inoperable.
+
+Make sure to thoroughly verify all details before execution and proceed at your own risk.
+```
+
 ## 0 Preparation
 
 - etherscan API Key
 - Infura API key(or you can use public rpc url)
-- private key for test account  
+- private key for test account
   -> don't use your real account
 - get a test token from faucet
 
@@ -45,30 +54,36 @@ I strongly recommend this is test account that has no real balance
 `import { vars } from "hardhat/config";`
 
 ```
+
 const SEPOLIA_PRIVATE_KEY = vars.get("SEPOLIA_PRIVATE_KEY");
 const ETHERSCAN_API_KEY = vars.get("ETHERSCAN_API_KEY");
 const INFURA_API_KEY = vars.get("INFURA_API_KEY");
+
 ```
 
 ### 3 set networks
 
 ```
+
 networks: {
-    sepolia: {
-      url: `https://sepolia.infura.io/v3/${INFURA_API_KEY}`,
-      accounts: [SEPOLIA_PRIVATE_KEY],
-    },
-  },
+sepolia: {
+url: `https://sepolia.infura.io/v3/${INFURA_API_KEY}`,
+accounts: [SEPOLIA_PRIVATE_KEY],
+},
+},
+
 ```
 
 ### 4 set etherscan
 
 ```
+
 etherscan: {
-    apiKey: {
-      sepolia: ETHERSCAN_API_KEY,
-    },
-  },
+apiKey: {
+sepolia: ETHERSCAN_API_KEY,
+},
+},
+
 ```
 
 ## 3 Create an access manager contract
@@ -78,7 +93,9 @@ etherscan: {
 ### 1 create an outline
 
 ```
+
 contract MyAccessManager {}
+
 ```
 
 ### 2 import the accessManager
@@ -86,7 +103,9 @@ contract MyAccessManager {}
 `npm i @openzeppelin/contracts`
 
 ```
+
 import { AccessManager } from "@openzeppelin/contracts/access/manager/AccessManager.sol";
+
 ```
 
 ### 3 inherit AccessManager
@@ -94,8 +113,10 @@ import { AccessManager } from "@openzeppelin/contracts/access/manager/AccessMana
 ### 4 constructor
 
 ```
+
 constructor() AccessManager(msg.sender) {
 }
+
 ```
 
 ## 4 Create a deploy file for access manager
@@ -126,8 +147,10 @@ constructor() AccessManager(msg.sender) {
 ### 2 verify
 
 ```
+
 npx hardhat verify --network sepolia <contract address> --contract contracts/MyAccessM
 anager.sol:MyAccessManager
+
 ```
 
 ### 3 check the etherscan
@@ -139,14 +162,18 @@ anager.sol:MyAccessManager
 ### 1 create an outline
 
 ```
-contract ERC20Ownable  {}
+
+contract ERC20Ownable {}
+
 ```
 
 ### 2 import the ERC20, Ownable
 
 ```
+
 import { ERC20 } from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
+
 ```
 
 ### 3 inherit ERC20, Ownable
@@ -158,8 +185,9 @@ import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
 ### 5 create a mint function with restricted modifier
 
 ```
+
 function mint(address to, uint256 amount) public onlyOwner {
-    _mint(to, amount);
+\_mint(to, amount);
 }
 
 ```
@@ -282,24 +310,34 @@ await manager.setTargetFunctionRole(
 ### 4 get a testSigner
 
 ```
+
 const testSigner = await ethers.getSigner(
-  "0xBc62697F318A7A19A7167b78e1d570FF80829277"
+"0xBc62697F318A7A19A7167b78e1d570FF80829277"
 );
+
 ```
 
 ### 5 create a data
 
 ```
+
 const data = ownable.interface.encodeFunctionData("mint", [
-    "0xBc62697F318A7A19A7167b78e1d570FF80829277",
-    1000,
-  ]);
+"0xBc62697F318A7A19A7167b78e1d570FF80829277",
+1000,
+]);
+
 ```
 
 ### 6 execute the function
 
 ```
+
 await manager
-    .connect(testSigner)
-    .execute("0x005A524953cd3e71eFa7160472269E77b25f03cA", data);
+.connect(testSigner)
+.execute("0x005A524953cd3e71eFa7160472269E77b25f03cA", data);
+
+```
+
+```
+
 ```
