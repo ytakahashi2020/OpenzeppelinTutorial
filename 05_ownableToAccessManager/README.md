@@ -19,8 +19,6 @@
 
   `https://www.alchemy.com/faucets/ethereum-sepolia`
 
-![](./images/1.png)
-
 ## 1 set hardhat
 
 ### 1 install
