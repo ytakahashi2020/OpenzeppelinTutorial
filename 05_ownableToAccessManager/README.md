@@ -1,11 +1,9 @@
 # Warning
 
-```
-Please proceed with caution and take full responsibility when executing this.
-Particularly, if you mistakenly assign the Owner role to an incorrect address using the transferOwnership function, the contract may become inoperable.
+**Please proceed with caution and take full responsibility when executing this.**
+**Particularly, if you mistakenly assign the Owner role to an incorrect address using the transferOwnership function, the contract may become inoperable.**
 
-Make sure to thoroughly verify all details before execution and proceed at your own risk.
-```
+**Make sure to thoroughly verify all details before execution and proceed at your own risk.**
 
 ## 0 Preparation
 
