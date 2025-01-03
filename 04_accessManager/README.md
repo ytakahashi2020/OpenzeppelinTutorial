@@ -8,6 +8,8 @@
 
   `https://www.alchemy.com/faucets/ethereum-sepolia`
 
+![](./images/1.png)
+
 ## 1 set hardhat
 
 ### 1 install
@@ -71,6 +73,8 @@ etherscan: {
 
 ## 3 Create an access manager contract
 
+![](./images/2.png)
+
 ### 1 create an outline
 
 ```
@@ -131,6 +135,8 @@ anager.sol:MyAccessManager
 `https://sepolia.etherscan.io/`
 
 ## 6 Create an access managed contract
+
+![](./images/3.png)
 
 ### 1 create an outline
 
@@ -199,6 +205,8 @@ AccessManagedERC20Mint.sol:AccessManagedERC20Mint <contract address> <access man
 
 ## 9 execute a grantRole function
 
+![](./images/4.png)
+
 ### 1 create a file
 
 `scripts/transaction/grantRole.ts`
@@ -226,6 +234,8 @@ AccessManagedERC20Mint.sol:AccessManagedERC20Mint <contract address> <access man
 `npx hardhat run scripts/transactions/grantRole.ts --network sepolia`
 
 ## 10 execute a setTargetFunctionRole function
+
+![](./images/5.png)
 
 ### 1 create a file
 
