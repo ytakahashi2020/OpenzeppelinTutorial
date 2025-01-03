@@ -168,19 +168,17 @@ contract ERC20Ownable {}
 ### 2 import the ERC20, Ownable
 
 ```
-
 import { ERC20 } from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
-
 ```
 
 ### 3 inherit ERC20, Ownable
 
 ### 4 constructor
 
-``constructor() ERC20("test", "TT") Ownable(_msgSender()){}`
+`constructor() ERC20("test", "TT") Ownable(_msgSender()){}`
 
-### 5 create a mint function with restricted modifier
+### 5 create a mint function with onlyOwner modifier
 
 ```
 
@@ -218,9 +216,7 @@ function mint(address to, uint256 amount) public onlyOwner {
 ### 2 verify
 
 ```
-
 npx hardhat verify --network sepolia --contract contracts/ERC20Ownable.sol:ERC20Ownable <contract address>
-
 ```
 
 ### 3 check the etherscan
@@ -256,13 +252,11 @@ npx hardhat verify --network sepolia --contract contracts/ERC20Ownable.sol:ERC20
 ### 7 setTargetFunctionRole
 
 ```
-
 await manager.setTargetFunctionRole(
-"0x08786b717dB43B637fF835503d4D558dAD235F56",
+"<target address>",
 [mintSelector],
-42n
+MINTER
 );
-
 ```
 
 ### 6 execute the grantRole and setTargetFunctionRole function
@@ -308,9 +302,8 @@ await manager.setTargetFunctionRole(
 ### 4 get a testSigner
 
 ```
-
 const testSigner = await ethers.getSigner(
-"0xBc62697F318A7A19A7167b78e1d570FF80829277"
+<MINTER Address>
 );
 
 ```
@@ -318,24 +311,16 @@ const testSigner = await ethers.getSigner(
 ### 5 create a data
 
 ```
-
 const data = ownable.interface.encodeFunctionData("mint", [
-"0xBc62697F318A7A19A7167b78e1d570FF80829277",
+"<any to address>",
 1000,
 ]);
-
 ```
 
 ### 6 execute the function
 
 ```
-
 await manager
 .connect(testSigner)
-.execute("0x005A524953cd3e71eFa7160472269E77b25f03cA", data);
-
-```
-
-```
-
+.execute("<target address>", data);
 ```
