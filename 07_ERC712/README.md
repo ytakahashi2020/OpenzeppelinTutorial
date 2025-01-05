@@ -1,3 +1,5 @@
+![](./images/0.png)
+
 ## 0 setup
 
 ### 1 install hardhat
@@ -30,6 +32,8 @@
 
 ### 4 create type hashes
 
+![](./images/1.png)
+
 ```
 bytes32 public constant SIMPLE_TYPE_HASH = keccak256(
     "SimpleStruct(string message,uint256 value)"
@@ -41,6 +45,8 @@ bytes32 public constant EIP712_DOMAIN_TYPE_HASH = keccak256(
 ```
 
 ### 5 create a domain selector
+
+![](./images/2.png)
 
 ```
 bytes32 public immutable DOMAIN_SELECTOR;
@@ -74,6 +80,8 @@ bytes memory signature
 
 #### 3 create a struct Hash
 
+![](./images/3.png)
+
 ```
 bytes32 structHash = keccak256(
     abi.encode(
@@ -85,6 +93,8 @@ bytes32 structHash = keccak256(
 ```
 
 #### 4 create a digest
+
+![](./images/4.png)
 
 ```
 bytes32 digest = keccak256(
@@ -163,6 +173,8 @@ const verifier = await ethers.getContractAt(
 
 ### 5 create a domain
 
+![](./images/5.png)
+
 ```
 const domain = {
     name: "Simple",
@@ -173,6 +185,8 @@ const domain = {
 ```
 
 ### 6 create a types
+
+![](./images/6.png)
 
 ```
 const types = {
