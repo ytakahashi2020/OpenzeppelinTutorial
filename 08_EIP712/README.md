@@ -41,6 +41,13 @@
 
 ### 6 create type hashes
 
+```
+struct SimpleStruct {
+    string message;
+    uint256 value;
+}
+```
+
 ![](./images/1.png)
 
 ```
