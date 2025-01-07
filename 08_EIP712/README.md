@@ -27,11 +27,19 @@
 `import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";`
 `import "@openzeppelin/contracts/utils/cryptography/EIP712.sol";`
 
-### 3 set ECDSA to bytes32(to use recover function)
+### 3 inherit EIP712
+
+### 4 create a constructor to set domain selector
+
+![](./images/2.png)
+
+`constructor() EIP712("SimpleEIP712Example", "1") {}`
+
+### 5 set ECDSA to bytes32(to use recover function)
 
 `using ECDSA for bytes32;`
 
-### 4 create type hashes
+### 6 create type hashes
 
 ![](./images/1.png)
 
@@ -41,13 +49,7 @@ bytes32 private constant MESSAGE_TYPEHASH = keccak256(
 );
 ```
 
-### 5 create a constructor to set domain selector
-
-![](./images/2.png)
-
-`constructor() EIP712("SimpleEIP712Example", "1") {}`
-
-### 6 create a verify function
+### 7 create a verify function
 
 #### 1 create an outline
 
