@@ -202,9 +202,5 @@ const message = {
 ### 9 verify the signature
 
 ```
-const recoveredAddress = await verifier.verify(
-    message.message,
-    message.value,
-    signature
-);
+const result = await verifier.verify(signer.address, message, signature);
 ```
